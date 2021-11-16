@@ -1,4 +1,6 @@
+import React, { useRef, useState } from 'react';
 import './App.css';
+
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
@@ -52,11 +54,24 @@ function SignOut() {
 }
 
 function ChatRoom() {
-    const messageRef = firestore.collection('messages');
-    const query = messageRef.orderBy('createdAt').limit(25);
+    const messagesRef = firestore.collection('messages');
+    const query = messagesRef.orderBy('createdAt').limit(25);
 
-    const [messages] = useCollectionData(query, {idField: 'id'})
-    console.log(messages)
+    const [messages] = useCollectionData(query, {idField: 'id'});
+
+    const [formValue, setFormValue] = useState('');
+
+    const sendMessage = async(e) => {
+        e.preventDefault();
+        const { uid, photoURL } = auth.currentUser;
+        await messagesRef.add({
+            text: formValue,
+            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+            uid,
+            photoURL
+        })
+        setFormValue('');
+    }
 
     return (
         <>
@@ -65,14 +80,29 @@ function ChatRoom() {
                     <ChatMessage key={message.id} message={message} />
                 )}
             </div>
+            <form onSubmit={sendMessage}>
+                <input
+                    value={formValue}
+                    onChange={(e) => setFormValue(e.target.value)}
+                    type="text"
+                />
+                <button type="submit">SEND</button>
+            </form>
         </>
     )
 }
 
 function ChatMessage(props) {
-    const { text, uid } = props.message;
+    const { text, uid, photoURL } = props.message;
 
-    return <p>{text}</p>
+    const messageClass = uid === auth.currentUser.uid ? 'sent' : 'received';
+
+    return (
+        <div className={`message ${messageClass}`}>
+            <img src={photoURL} alt="avatar"/>
+            <p>{text}</p>
+        </div>
+    )
 }
 
 export default App;
