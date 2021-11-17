@@ -7,6 +7,7 @@ import 'firebase/compat/auth';
 
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
+import {AiOutlineSend, BsChatLeft, BsChatLeftText, FiLogOut} from "react-icons/all";
 
 firebase.initializeApp({
     apiKey: "AIzaSyA5we1X9VqP5LYreZ8Wa9XW4YOFvGeisXc",
@@ -28,7 +29,10 @@ function App() {
     return (
         <div className="App">
             <header>
-                <h1>Superchat</h1>
+                <h1 className="flex align-items-center">
+                    <span>Superchat</span>
+                    <BsChatLeftText className="ml-sm" />
+                </h1>
                 <SignOut />
             </header>
 
@@ -58,7 +62,7 @@ function SignIn() {
 
 function SignOut() {
     return auth.currentUser && (
-        <button className="sign-out" onClick={() => auth.signOut()}>Sign Out</button>
+        <button className="flex align-items-center sign-out" onClick={() => auth.signOut()}> <h3 className="flex align-items-center margin-0 font-regular" ><FiLogOut/><span className="ml-xs" >Sign Out</span></h3></button>
     )
 }
 
@@ -106,7 +110,7 @@ function ChatRoom() {
                 placeholder="send message..."
             />
 
-            <button type="submit" disabled={!formValue}>🕊️</button>
+            <button type="submit" disabled={!formValue}><AiOutlineSend className="font-lg" /></button>
 
         </form>
     </>)

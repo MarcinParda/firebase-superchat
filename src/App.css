@@ -10,7 +10,7 @@ body {
 }
 
 .App header {
-    background-color: #181717;
+    background-color: #6649b8;
     height: 10vh;
     min-height: 50px;
     color: white;
@@ -24,6 +24,9 @@ body {
     z-index: 99;
     padding: 10px;
     box-sizing: border-box;
+    -webkit-box-shadow: 0 2px 4px 0 #1b0d3d;
+    -moz-box-shadow: 0 2px 4px 0 #1b0d3d;
+    box-shadow: 0 2px 4px 0 #1b0d3d;
 }
 
 .App section {
@@ -84,15 +87,12 @@ input {
 }
 
 button {
-    background-color: #282c34; /* Green */
-    border: none;
+    background-color: transparent;
     color: white;
-    padding: 15px 32px;
+    border: none;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
     cursor: pointer;
-    font-size: 1.25rem;
 }
 
 button:disabled {
@@ -108,7 +108,18 @@ button:disabled {
     margin: 0 auto;
 }
 
+.sign-out {
+    padding: .5rem 1rem;
+    border-radius: 99px;
+    border: 2px solid rgba(0,0,0,.25);
+    color: #ffb3b3;
+}
 
+.sign-out:hover {
+    border: 2px solid rgba(0,0,0,0);
+    background: rgba(0,0,0,.25);
+    color: #ffdede;
+}
 
 
 ul, li {
@@ -147,9 +158,45 @@ p {
     color: black;
 }
 
+.flex {
+    display: flex;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
 img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
     margin: 2px 5px;
+}
+
+.ml-xs {
+    margin-left: 0.25rem;
+}
+
+.ml-sm {
+    margin-left: 0.5rem;
+}
+
+.ml-md {
+    margin-left: 1rem;
+}
+
+.font-lg {
+    font-size: 2rem;
+}
+
+.font-bold {
+    font-weight: bold;
+}
+
+.red {
+    color: #ff5555;
+}
+
+.margin-0 {
+    margin: 0;
 }
