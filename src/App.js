@@ -7,7 +7,7 @@ import 'firebase/compat/auth';
 
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
-import {AiOutlineSend, BsChatLeft, BsChatLeftText, FiLogOut} from "react-icons/all";
+import {AiOutlineSend, BsChatLeftText, FiLogOut} from "react-icons/all";
 
 firebase.initializeApp({
     apiKey: "AIzaSyA5we1X9VqP5LYreZ8Wa9XW4YOFvGeisXc",
@@ -124,7 +124,7 @@ function ChatMessage(props) {
 
     return (
         <div className={`message ${messageClass}`}>
-            <img src={photoURL || 'https://avatars.dicebear.com/api/adventurer/your-cust.svg'}  alt={"photo"}/>
+            <img src={photoURL || 'https://avatars.dicebear.com/api/adventurer/your-cust.svg'}  alt={`avatar`}/>
             <p>{text}</p>
         </div>
     )
