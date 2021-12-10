@@ -10,3 +10,7 @@
 - Sign Out
 - Post message
 - Read messages of all users
+
+## Fuctionalities to implement
+
+- [ ] Rewrite to typescript
