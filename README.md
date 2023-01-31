@@ -14,3 +14,4 @@
 ## Fuctionalities to implement
 
 - [ ] Rewrite to typescript
+- [ ] Displaying message date
